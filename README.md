@@ -15,67 +15,90 @@ This project demonstrates super-resolution using the **SwinIR** model trained on
 - Visual comparison of LR, SR, and HR images  
 
 ---
+Getting Started
 
-## Getting Started
+This project is designed to run smoothly on Google Colab.
 
-This project is designed to run in **Google Colab**.
+Step 1: Open in Colab
+Use this link to open the notebook directly in Google Colab:
+https://colab.research.google.com/github/yourusername/yourrepo/blob/main/SwinIR_Flickr2K.ipynb
 
-### Step 1: Open in Colab  
-Click the badge at the top, or use this link:  
-`https://colab.research.google.com/github/yourusername/yourrepo/blob/main/SwinIR_Flickr2K.ipynb`
+Step 2: Run All Cells
 
-### Step 2: Run All Cells  
-
-- The dataset should already be available in your Google Drive.
-- Modify paths if needed:
-
-```python
+Make sure the Flickr2K dataset is available in your Google Drive.
 hr_dir = "/content/drive/MyDrive/Flickr2K/Flickr2K/Flickr2K_HR"
 lr_dir = "/content/drive/MyDrive/Flickr2K/Flickr2K/Flickr2K_LR_bicubic/X4"
-Training will begin and logs will show PSNR/SSIM.
-Sample outputs are visualized after training.
 
+---
+Training will start automatically.
+
+Evaluation metrics (PSNR and SSIM) will be displayed.
+
+Output samples will be shown at the end of training.
+
+---
 Model Architecture
-This version uses the SwinIR architecture based on Swin Transformers, including:
+
+This implementation is based on the SwinIR architecture, which uses Swin Transformers for image restoration tasks. The structure includes:
 
 Patch embedding and linear positional encoding
 
-Residual Swin Transformer blocks (RSTB)
+Multiple Residual Swin Transformer Blocks (RSTB)
 
-PixelShuffle-based upsampling for ×4 scale
+Upsampling using PixelShuffle layers for 4x scaling
 
-Final convolutional layer for image output
+Final convolutional output layer to reconstruct the high-resolution image
 
+---
 Evaluation Metrics
-We use the following metrics to evaluate model performance:
 
-PSNR (Peak Signal-to-Noise Ratio): Measures image reconstruction quality
+Two standard image quality metrics are used to evaluate the model:
 
-SSIM (Structural Similarity Index): Evaluates perceptual similarity to ground truth
+PSNR (Peak Signal-to-Noise Ratio): Measures image fidelity
 
-Example Results on a 10-image validation subset of Flickr2K:
+SSIM (Structural Similarity Index Measure): Measures perceptual similarity
 
-PSNR: ~27.3 dB
+Example Results (on 10 validation images from the Flickr2K dataset):
+PSNR: approximately 27.3 dB
+SSIM: approximately 0.79
 
-SSIM: ~0.79
+---
 
 Sample Output
-![image](https://github.com/user-attachments/assets/e4c9e72c-85c4-4a3c-85a7-9bbab18f9f89)
 
+Low-Resolution Input -> Super-Resolved Output -> Ground Truth High-Resolution
+
+You can view sample visual outputs in the notebook once training is completed.
+
+---
+![image](https://github.com/user-attachments/assets/997d5c7b-2567-4eaf-84de-d3613b47e58c)
+
+---
 Dataset Structure
-The project uses the Flickr2K dataset with the following structure:
+
+Make sure your Flickr2K dataset is organized as follows:
+
 Flickr2K/
-├── Flickr2K_HR/                      # High-res ground truth images
+├── Flickr2K_HR/ (High-resolution ground truth images)
 ├── Flickr2K_LR_bicubic/
-│   └── X4/                           # Low-res images (bicubic downsampled, x4)
+└── X4/ (Low-resolution images, bicubic downsampled by factor of 4)
 
+---
 Saving and Loading
-The model is saved automatically after training.
 
-You can load the .pth file for inference or fine-tuning later.
+The model is automatically saved after training completes.
 
+The saved model can later be reloaded for inference or further fine-tuning.
+
+---
 Author
-Created by Gopika R. Feel free to reach out for questions or collaboration ideas!
+Created by Gopika R Feel free to reach out for questions or collaboration ideas!
+
+
+
+
+
+
 
 
 
